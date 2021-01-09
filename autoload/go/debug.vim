@@ -785,6 +785,9 @@ function! go#debug#Start(mode, ...) abort
       if a:mode is 'debug' || a:mode is 'test'
         let l:cmd = extend(l:cmd, s:package(a:000))
         let l:cmd = extend(l:cmd, ['--output', tempname()])
+        if get(g:, "go_debug_use_getcwd", "false") ==? "true"
+          let l:cmd = extend(l:cmd, ['--wd', getcwd()])
+        endif
       elseif a:mode is 'attach'
         let l:cmd = add(l:cmd, a:1)
         let s:state['kill_on_detach'] = v:false

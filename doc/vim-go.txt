@@ -2095,6 +2095,23 @@ Currently accepted values:
       let g:go_debug = []
 <
 
+                                                        *'g:go_debug_options'*
+                                                        
+A list of options to send to the debugger.
+
+For instance, to set the both the init file for delve and the --only-same-user
+flag, the following option would be set:
+>
+        let g:go_debug_options = [["--init", "/path/to/file"],"--only-same-user"]
+<
+
+                                                          *'go_debug_use_cwd'*
+                                                          
+Pass vim's getcwd() to delve's --wd parameter.  This will allow the vim 
+current working directory to be used as the working directory for the debugged
+program. By default it is disabled >
+        let g:go_debug_use_cwd = 1
+<
 ==============================================================================
 SYNTAX HIGHLIGHTING                                 *ft-go-syntax* *go-syntax*
 
